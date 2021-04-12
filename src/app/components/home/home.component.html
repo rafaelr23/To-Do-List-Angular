@@ -1,0 +1,58 @@
+<app-navbar></app-navbar>
+
+<div class="container me-5 animated fadeIn">
+
+    <div class="row g-2 container  mt-5 text-light ">
+        <div class="col  col-6">
+
+            <form class="row g-3" #form="ngForm" (ngSubmit)="onSubmit(form)">
+                <label class="form-label h2 text-center">Things to do</label>
+                <div class="col-10">
+                    <label for="inputTermino" class="visually-hidden">Lista</label>
+                    <input type="text" class="form-control" id="inputTermino" name="termino" #name="ngModel" [(ngModel)]="newList.termino" placeholder="new homework">
+                </div>
+                <div class="col-2">
+                    <button type="submit" class="btn btn-primary mb-3">Confirm</button>
+                </div>
+            </form>
+
+        </div>
+
+
+
+    </div>
+    <div class="row animated fadeIn">
+        <div class="col-6">
+
+            <div class="card">
+                <div class="card-body">
+
+                    <table class="table table-hover table-striped mb-0">
+                        <thead>
+                            <tr>
+                                <th>Tasks</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let list of lists">
+                                <td (click)="list.complete = !list.complete" style="min-width: 215px;">{{list.termino}}</td>
+                                <td style="max-width: 60px;"><span class="badge bg-danger" *ngIf="list.complete">Terminado</span></td>
+                                <td style="max-width: 100px;">
+                                    <div class="float-end">
+
+                                        <button class="btn btn-primary" (click)="modificar(list)"> <i class=" fa fa-save"></i> </button>
+                                        <button class="btn btn-danger ms-1" (click)="borrar(list)"> <i class=" fa fa-trash-o"></i> </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
